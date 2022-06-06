@@ -1,0 +1,162 @@
+:root {
+    --font-color: #121212;
+    --bg-color: #fff;
+}
+
+body[data-theme=dark] {
+    --font-color: #fff;
+    --bg-color: #121212;
+}
+
+body:not([data-theme=dark]) .theme-dark {
+    display: none
+}
+
+body[data-theme=dark] .theme-light {
+    display: none
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: system-ui;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+
+footer p {
+    display: block;
+    padding: 0;
+    margin: 10px 10px;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: context-menu;
+}
+
+
+
+.remove {
+    display: inline-block;
+    padding: 2px 4px;
+    color: #f00;
+    cursor: pointer;
+}
+
+h2 {
+    position: fixed;
+    margin: 5px 10px;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+ul {
+    position: fixed;
+    list-style-type: none;
+    margin: 35px 10px;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+li {
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+
+
+.addItemBar {
+    position: fixed;
+    margin: 10px 10px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--font-color);
+    width: 300px;
+    height: 44px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.addItemBar > input {
+    all: unset;
+    font: 16px system-ui;
+    color: var(--bg-color);
+    height: 100%;
+    width: 100%;
+    padding: 6px 10px;
+}
+
+::placeholder {
+    color: var(--bg-color);
+    opacity: 0.7;
+}
+
+.addItemBar > button {
+    all: unset;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    color: var(--bg-color);
+}
+
+
+#theme {
+    all: unset;
+    cursor: pointer;
+    position: fixed;
+    margin: 10px 10px;
+    top: 0;
+    right: 0;
+    color: var(--font-color);
+}
+
+
+

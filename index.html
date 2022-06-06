@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <title>Radar przepisów</title>
+    <meta name="description" content="Wyszukaj przepis z produktów które akurat masz w lodówce...">
+    <meta name="author" content="Łukasz Kucharczyk, Oliwier Adamczyk 1P">
+    <meta name="copyright" content="Copyright Radar Przepisów">
+
+    <link rel="stylesheet" type="text/css" href="assets/styles/index.css">
+
+    <script src="https://kit.fontawesome.com/ac1b82ff7f.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+
+
+    <body>
+        <header>
+            <h2>Twoje produkty:</h2>
+            <ul id="listItem"></ul>
+            
+            <div class="addItemBar">
+                <input type="text" id="newItem" placeholder="Dodaj produkt..." autocomplete="off" required>
+                <button type="button" id="addItem">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <button id="theme" aria-label="zmień motyw">
+                <i class="fa-solid fa-cloud-sun"></i>
+            </button>
+        </header>
+
+
+        <content>
+
+
+        </content>
+
+
+        <footer>
+            <div id="copyright">
+                <p>Copyright &copy;2022 Radar Przepisów.</p>
+            </div>
+            <div id="dev">
+                <p>Web developers: Luki & Vapniak</p>
+            </div>
+        </footer>
+
+
+        <script>
+            try {
+                document.body.dataset.theme = localStorage.getItem('theme')
+            } catch (e) {
+                document.body.dataset.theme = null
+            }
+        </script>
+        <script src="assets/scripts/themes.js"></script>
+        <script src="assets/scripts/list.js"></script>
+        <script src="assets/scripts/onselect.js"></script>
+    </body>
+</html>
