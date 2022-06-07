@@ -7,8 +7,4 @@ function changeTheme() {
     document.body.setAttribute('data-theme', typeTheme);
 
     localStorage.setItem("theme", typeTheme);
-
-
-
-
 };

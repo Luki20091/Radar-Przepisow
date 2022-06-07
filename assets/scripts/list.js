@@ -1,3 +1,9 @@
+
+
+
+
+const items = document.querySelectorAll("span");
+
 document.getElementById("addItem").addEventListener("click", addItem);
 
 document.getElementById("newItem").addEventListener("keypress", function (event) {
@@ -25,10 +31,12 @@ function addItem() {
         li.appendChild(span2);
 
 
-
         document.getElementById("listItem").appendChild(li);
         document.getElementById("newItem").value = "";
         document.getElementById("newItem").focus();
+        document.getElementById("addItemBar").classList.add("top");
+
+
     }
     document.getElementById("newItem").focus();
 };
@@ -36,3 +44,20 @@ function addItem() {
 function removeItem() {
     document.getElementById("listItem").removeChild(this.closest("li"));
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

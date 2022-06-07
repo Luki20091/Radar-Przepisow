@@ -16,13 +16,13 @@
 </head>
 
 
-    <body>
+    <body onload="IndexLoad()">
         <header>
-            <h2>Twoje produkty:</h2>
+            <h3>Twoje produkty:</h3>
             <ul id="listItem"></ul>
             
-            <div class="addItemBar">
-                <input type="text" id="newItem" placeholder="Dodaj produkt..." autocomplete="off" required>
+            <div id="addItemBar">
+                <input type="text" id="newItem" placeholder="Dodaj produkt..." autocomplete="off" onkeydown="return /[a-z, ęóąśłżźćń]/i.test(event.key)" maxlength="20" required>
                 <button type="button" id="addItem">
                     <i class="fa-solid fa-plus"></i>
                 </button>
@@ -35,9 +35,28 @@
 
 
         <content>
+            <div>
+                <h3 class="content-header">Babka Pomarańczowa</h3>
+                <img src="assets/images/test.png" alt="test">
 
 
+                <h3 class="content-list">Składniki:</h3>
+                <ul class="list">
+                    <li><span>Mleko</span> 200 ml</li>
+                    <li><span>Masło</span> 100 gr</li>
+                    <li><span>Jajka</span> 5 szt.</li>
+                    <li><span>Mąka</span> pszenna 180 gr</li>
+                    <li><span>Cukier</span> puder 100 gr</li>
+                </ul>
+
+                <h3 class="content-footer-time"><i class="fa-solid fa-clock"></i> 30 min</h3>
+                <h3 class="content-footer-difficult"><i class="fa-solid fa-star"></i> 4/5</h3>
+            </div>
+            <div id="error">
+                <h3>Brak Wyników</h3>
+            </div>
         </content>
+
 
 
         <footer>
@@ -60,5 +79,6 @@
         <script src="assets/scripts/themes.js"></script>
         <script src="assets/scripts/list.js"></script>
         <script src="assets/scripts/onselect.js"></script>
+        <script src="assets/scripts/load.js"></script>
     </body>
 </html>
