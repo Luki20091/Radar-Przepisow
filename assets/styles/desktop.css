@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+
+:root {
+	--background-color: #1b1a2c;
+	--background-color-dark: #11101b;
+	--font-color: #bcc4f1;
+	--font-color-hover: #e6eeff;
+	--font-default: 'Comfortaa';
+	--transition-bounce: 600ms cubic-bezier(0.64,-0.55, 0.37, 1.55) top, width, height;
+	--transition-bounce2: 750ms cubic-bezier(0.64,-0.55, 0.37, 1.55) top, width, height;
+	--transition-bounce3: 900ms cubic-bezier(0.64,-0.55, 0.37, 1.55) top, width, height;
+	--transition-loader: 500ms opacity;
+	--transition: 100ms;
+	--shadow: 1px 1px rgba(0, 0, 20, 0.3);
+	--blur: blur(10px);
+}
+
+
+body[data-theme=light] {
+	--background-color-dark: #bcc4f1;
+	--background-color: #e6eeff;
+	--font-color-hover: #11101b;
+	--font-color: #1b1a2c;
+	--shadow: 1px 1px rgba(160, 160, 180, 0.3);
+}
+
+body:not([data-theme=light]) .theme-light {
+	display: none;
+}
+
+body[data-theme=light] .theme-light {
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: var(--background-color);
+	color: var(--font-color-hover);
+	font-family: var(--font-default);
+	font-weight: 700;
+	font-size: 140%;
+	cursor: context-menu;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+
+#menuBarContainer {
+	position: fixed;
+	top: -100px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: space-between;
+	align-items: center;
+	padding: 36px 12px 12px 12px;
+	background-color: var(--background-color-dark);
+	box-shadow: var(--shadow);
+	border-radius: 0 0 12px 12px;
+	transition: var(--transition-bounce);
+	z-index: 60;
+}
+
+
+.menuBarItem {
+	padding: 12px 10px;
+	border-radius: 6px;
+	cursor: pointer;
+	text-shadow: var(--shadow);
+	transition: var(--transition);
+}
+
+.menuBarItem:hover {
+	color: var(--font-color-hover);
+	background-color: var(--background-color);
+	box-shadow: var(--shadow);
+}
+
+.menuBarItem:focus {
+	border: 0;
+	outline: 0;
+	color: var(--font-color-hover);
+	background-color: var(--background-color);
+	box-shadow: var(--shadow);
+}
+
+.menuBarItem:active {
+	background-color: var(--font-color);
+	color: var(--background-color);
+	box-shadow: none;
+}
+
+.menuBarContainer-visible {
+	top: -25px !important;
+}
+
+
+.loader-hidden {
+	opacity: 0% !important;
+}
+
+#loader {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	font-size: 45px;
+	transform: translate(-50%, -50%);
+	transition: var(--transition-loader);
+	opacity: 100%;
+	z-index: 1000;
+}
+
+#loader2 {
+	display: block;
+	position: fixed;
+	background-color: #000;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	transition: var(--transition-loader);
+	background-color: var(--background-color-dark);
+	opacity: 100%;
+	z-index: 800;
+}
+
+
+
+#logout {
+	display: none;
+}
+
+.logout-visible {
+	display: unset !important;
+}
+
+
+
+
+
+
+
+
+
+
+.formsContainer {
+	position: fixed;
+	top: -200px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 50%;
+	height: min-content;
+	padding: 20px;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: space-evenly;
+	align-items: center;
+	text-align: center;
+	background-color: var(--background-color-dark);
+	box-shadow: var(--shadow);
+	transition: var(--transition-bounce2);
+}
+
+
+#dashboardContainer {
+	top: -2100px;
+	flex-wrap: wrap;
+	flex-direction: column;
+	width: 80%;
+	height: 70%;
+	justify-content: space-between;
+	background-color: transparent;
+	box-shadow: none;
+}
+
+#dashboardContainer > div {
+	background-color: var(--background-color-dark);
+	box-shadow: var(--shadow);
+    overflow-y: auto;
+    overflow-x: hidden;
+	display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.songInDashboardContainer {
+	width: calc(100% - 10px);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+}
+
+.songInDashboardContainer > p {
+	margin: 0;
+	padding: 0;
+}
+
+
+#timelineDashboardContainer {
+	height: 100%;
+}
+
+
+.dashboardContainer-visible {
+	top: calc(50% + 35px) !important;
+	transform: translate(-50%, -50%) !important;
+	z-index: 50;
+}
+
+.dashboardContainer-visible > div {
+	width: calc(50% - 25px);
+	height: calc(50% - 25px);
+	margin: 12px;
+	border-radius: 12px;
+	background-color: var(--background-color);
+}
+
+.songFormContainer-visible {
+	top: 24% !important;
+	z-index: 50;
+}
+
+.greetingFormContainer-visible {
+	top: 63% !important;
+	z-index: 40;
+}
+
+.loginFormContainer-visible {
+	top: calc(50% + 35px) !important;
+	transform: translate(-50%, -50%) !important;
+	z-index: 50;
+}
+
+
+.form {
+	width: 100%;
+	height: 36px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+
+.form input {
+	height: 100%;
+	width: 100%;
+	margin: 0px 10px;
+	padding: 5px;
+    outline: 0;
+	border-radius: 6px;
+    background: unset;
+    border: 0;
+	border-bottom: 2px solid var(--font-color);
+	color: var(--font-color-hover);
+	text-shadow: var(--shadow);
+    font-size: 15px;
+}
+
+.form input::placeholder {
+	color: var(--font-color);
+}
+.form input:focus {
+	border-bottom: 2px solid var(--font-color-hover);
+	background-color: var(--background-color);
+	box-shadow: var(--shadow);
+}
+
+.form input:-webkit-autofill, .form input:-webkit-autofill:hover{
+    background: unset;
+    border: 0;
+	border-bottom: 2px solid var(--font-color);
+	color: var(--font-color-hover);
+}
+.form input:-webkit-autofill:focus {
+	border-bottom: 2px solid var(--font-color-hover);
+	background-color: var(--background-color);
+	box-shadow: var(--shadow);
+}
+
+
+
+
+
+
+
+
+
+.form button {
+	height: 100%;
+	margin: 0px 10px;
+}
+
+section h3 {
+	margin: 0 0 20px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#loginPassword, #loginSend {
+	display: none;
+}
+
+
+
+
+
+
+
+
+
+.container-visible {
+	top: 50% !important;
+	transform: translate(-50%, -50%) !important;
+	z-index: 50;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+	<title>Radar przepisów | Strona Główna</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="Łukasz Kucharczyk" />
+	<meta name="copyright" content="Copyright RadioZST 2023" />
+
+	<link rel="stylesheet" type="text/css" href="assets/styles/desktop.css">
+	<script src="https://kit.fontawesome.com/ac1b82ff7f.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+	<section id="loader"><i class="fa-solid fa-utensils fa-flip fa-2xl"></i></section>
+	<section id="loader2"></section>
+	<section id="menuBarContainer">
+		<a class="menuBarItem button" id="index" title="Kliknij, aby przejść na stronę główną." tabindex="1"><i class="fa-solid fa-utensils fa-xl"></i>&nbsp;Radar przepisów</a>
+		<div>
+			<a class="menuBarItem" id="theme" title="Kliknij, aby zmienić motyw na ciemny." tabindex="2"><i class="fa-solid fa-circle-half-stroke fa-xl"></i></a>
+			<a class="menuBarItem button" id="panel" title="Kliknij, aby przejść do panelu administracyjnego." tabindex="4"><i class="fa-solid fa-screwdriver-wrench fa-xl"></i></a>
+		</div>
+	</section>
+	<section id="songFormContainer" class="formsContainer">
+		<h3>Dodaj produkt:</h3>
+		<div class="form">
+			<input type="text" id="newItem" placeholder="Produkt" autocomplete="off" onkeydown="return /[a-z ęóąśłżźćń]/i.test(event.key)" maxlength="30" tabindex="5" autofocus>
+			<a id="addItem" class="menuBarItem" tabindex="6"><i class="fa-solid fa-circle-plus fa-lg"></i></a>
+		</div>
+	</section>
+	<section id="greetingFormContainer" class="formsContainer">
+		<h3>Twoje produkty:</h3>
+		<ul id="listItem"></ul>
+	</section>
+
+		<script>
+			try {
+				document.body.dataset.theme = localStorage.getItem("theme");
+
+				if (document.body.dataset.theme == "light") {
+					document.getElementById("theme").title = "Kliknij, aby zmienić motyw na ciemny.";
+				} else {
+					document.getElementById("theme").title = "Kliknij, aby zmienić motyw na jasny.";
+				};
+			} catch (e) {
+				localStorage.setItem("theme", "dark");
+				document.getElementById("theme").title = "Kliknij, aby zmienić motyw na jasny.";
+			};
+		</script>
+		<script>
+			window.onload = function () {
+				if (typeof window.localStorage !== "undefined" && !localStorage.getItem('theme')) {
+					localStorage.setItem('theme', "dark");
+				};
+			};
+		</script>
+		<script>
+
+
+
+			const songFormContainer = document.getElementById("songFormContainer");
+			const greetingFormContainer = document.getElementById("greetingFormContainer");
+
+
+			setTimeout(function load() {
+				songFormContainer.classList.add("songFormContainer-visible");
+			}, 800);
+
+			setTimeout(function load() {
+				greetingFormContainer.classList.add("greetingFormContainer-visible");
+			}, 900);
+
+		</script>
+		<script language="javascript" src="assets/scripts/themes.js"></script>
+		<script language="javascript" src="assets/scripts/loader.js"></script>
+		<script language="javascript" src="assets/scripts/locations.js"></script>
+		<script language="javascript" src="assets/scripts/date.js"></script>
+
+
+
+
+		<script type="module">
+
+
+
+
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+			import { getDatabase, ref, get} from "https://www.gstatic.com/firebasejs/9.12.1/firebase-database.js";
+
+			const firebaseConfig = {
+			  apiKey: "AIzaSyAaD6NWxKc_bMOeUZiHgE85rw82ea4HTyY",
+			  authDomain: "radar-przepisow.firebaseapp.com",
+			  databaseURL: "https://radar-przepisow-default-rtdb.europe-west1.firebasedatabase.app",
+			  projectId: "radar-przepisow",
+			  storageBucket: "radar-przepisow.appspot.com",
+			  messagingSenderId: "654711323220",
+			  appId: "1:654711323220:web:e3ef62497fd6497b318bc1"
+			};
+			const app = initializeApp(firebaseConfig);
+			const database = getDatabase(app);
+            
+
+            document.getElementById("addItem").addEventListener("click", function (e) {
+                addItem();
+			});
+            document.getElementById("addItem").addEventListener("keyup", ({ key }) => {
+				if (key === "Enter") {
+                    addItem();
+				};
+			});
+            document.getElementById("newItem").addEventListener("keyup", ({ key }) => {
+				if (key === "Enter") {
+                    addItem();
+				};
+			});
+
+            function addItem() {
+                if (document.getElementById("newItem").value !== "") {
+                    var li = document.createElement("li");
+
+
+
+                    var span1 = document.createElement("span1");
+                    span1.classList.add("remove");
+                    span1.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                    span1.addEventListener("click", removeItem);
+                    li.appendChild(span1);
+
+
+
+                    var span2 = document.createElement("span2");
+                    span2.classList.add("span2");
+                    span2.textContent = document.getElementById("newItem").value.charAt(0).toUpperCase() + document.getElementById("newItem").value.slice(1).toLowerCase();
+                    li.appendChild(span2);
+                    document.getElementById("listItem").appendChild(li);
+                    //checkItems();
+                    //document.getElementById("addItemBar").classList.add("top");
+                    document.getElementById("newItem").value = "";
+                    document.getElementById("newItem").focus();
+
+				};
+                document.getElementById("newItem").value = "";
+                document.getElementById("newItem").focus();
+            };
+
+            function removeItem() {
+                document.getElementById("listItem").removeChild(this.closest("li"));
+                checkItems();
+                document.getElementById("newItem").value = "";
+                document.getElementById("newItem").focus();
+            };
+		</script>
+
+
+		<!--
+			ooooo        ooooo     ooo oooo    oooo ooooo
+			`888'        `888'     `8' `888   .8P'  `888'
+			 888          888       8   888  d8'     888
+			 888          888       8   88888[       888
+			 888          888       8   888`88b.     888
+			 888       o  `88.    .8'   888  `88b.   888
+			o888ooooood8    `YbodP'    o888o  o888o o888o
+		-->
+</body>
+</html>
